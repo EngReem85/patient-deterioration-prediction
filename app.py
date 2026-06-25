@@ -6,20 +6,35 @@ import warnings
 import plotly.graph_objects as go
 from datetime import datetime
 warnings.filterwarnings('ignore')
-
+from huggingface_hub import hf_hub_download
+import os
 
 def load_model():
     try:
-        with open('model_artifacts(1).pkl', 'rb') as f:
+        
+        local_path = 'model_artifacts(1).pkl'
+        if os.path.exists(local_path):
+            with open(local_path, 'rb') as f:
+                artifacts = pickle.load(f)
+            print("✅ Model loaded successfully from local file")
+            return artifacts.get('model'), artifacts.get('scaler')
+        
+        
+        print("📥 Downloading model from Hugging Face Hub...")
+        model_path = hf_hub_download(
+            repo_id="EngReem85/patient-deterioration-predictor",  
+            filename="model_artifacts(1).pkl"
+        )
+        with open(model_path, 'rb') as f:
             artifacts = pickle.load(f)
-        print("✅ Model loaded successfully")
+        print("✅ Model loaded successfully from Hub")
         return artifacts.get('model'), artifacts.get('scaler')
+        
     except Exception as e:
         print(f"❌ Error loading model: {e}")
         return None, None
 
 model, scaler = load_model()
-
 
 def analyze_trends(historical_df):
     """Analyze trends over time"""
