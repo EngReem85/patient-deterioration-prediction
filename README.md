@@ -1,4 +1,3 @@
-```markdown
 #  Patient Deterioration Prediction Using Hybrid 3-Layer AI Architecture
 
 [![Hugging Face Space](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/EngReem85/patient-deterioration-prediction)
