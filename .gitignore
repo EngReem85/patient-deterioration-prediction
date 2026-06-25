@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Model file (منع رفعه مستقبلاً)
+model_artifacts (1).pkl
