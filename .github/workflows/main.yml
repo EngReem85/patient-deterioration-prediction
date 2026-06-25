@@ -29,8 +29,8 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           
-          # استخدام المتغيرات السرية بدلاً من الكتابة المباشرة
+          # استخدام المتغيرات السرية
           git remote add hf https://x-token-auth:$HF_TOKEN@huggingface.co/spaces/$HF_USERNAME/$HF_SPACE_NAME
           
-          # دفع التغييرات
+          # دفع التغييرات (بدون ملف النموذج)
           git push --force hf main
